@@ -10,14 +10,7 @@ Rectangle {
   
   Moon {
     id: moon
-    width: root.width / 5
-    height: root.width / 5
-  }
-  
-  Timer {
-    running: true
-    repeat: true
-    interval: 1000
-    onTriggered: moon.update()
+    width: root.width / 10 // This assumes width > height (usual resolutions) 
+    height: root.width / 10
   }
 }
