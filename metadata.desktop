@@ -1,0 +1,18 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=PixelSky Wallpaper
+Comment=Pixelize your day
+
+Type=Service
+ServiceTypes=Plasma/DeclarativeWallpaper
+Icon=applications-toys
+X-Plasma-MainScript=ui/main.qml
+X-KDE-PluginInfo-Author=Lluis Esquerda
+X-KDE-PluginInfo-Email=eskerda@gmail.com
+X-KDE-PluginInfo-Name=org.kde.pixelskywallpaper
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=http://kde.org/
+X-KDE-PluginInfo-Category=Examples
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true

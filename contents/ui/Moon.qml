@@ -37,12 +37,8 @@ Item {
     z: 0
     opacity: 1
   }
-  ParallelAnimation {
-         running: true
-         NumberAnimation { target: moon; property: "opacity"; from: 0; to: 1; duration: 750 }
-  }
-  //Behavior on x { NumberAnimation { duration: 1000; easing.type: Easing.InQuad } }
-  //Behavior on y { NumberAnimation { duration: 1000; easing.type: Easing.InQuad } }
+  
+  NumberAnimation { running: true; target: moon; property: "opacity"; from: 0; to: 1; duration: 750 }
   
   function update(){
       ellipsis_x = (ellipsis_x + step_inc) % parent.width;
@@ -51,6 +47,7 @@ Item {
       ellipsis_y = parent.height - getEllipsisY(k, b, alpha);
       x = ellipsis_x - width / 2;
       y = ellipsis_y - height / 2;
+      moonAsset.source = getPhaseAsset(minutes%8);
   }
   
   function getAlpha(ellipsis_x, h, a){
@@ -68,7 +65,7 @@ Item {
   Timer {
     running: true
     repeat: true
-    interval: 1000 * 60 
+    interval: 1000 
     onTriggered: update()
   }
 }
