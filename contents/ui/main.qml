@@ -50,10 +50,10 @@ Rectangle {
 
     Ellipse {
       id: moon_pos
-      verticalRadius: root.height / 2 - moon.height
+      verticalRadius: root.height
       horizontalRadius: root.width / 2
       center_x: root.width / 2
-      center_y: root.height / 2
+      center_y: root.height + moon.height
       displacement: 11 * Math.PI / 8
       alpha: time_alpha
     }
@@ -74,10 +74,10 @@ Rectangle {
 
     Ellipse {
       id: sun_pos
-      verticalRadius: root.height / 2 - sun.height
+      verticalRadius: root.height
       horizontalRadius: root.width / 2
       center_x: root.width / 2
-      center_y: root.height / 2
+      center_y: root.height + sun.height
       displacement: 3 * Math.PI / 8
       alpha: time_alpha
     }
