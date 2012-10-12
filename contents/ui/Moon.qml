@@ -29,6 +29,6 @@ Astro {
     var new_moon = new Date(1970, 0, 7, 20, 35, 0);
     var phase_seconds = ((now.getTime() - new_moon.getTime())/1000) % lp;
     var phase_day = Math.floor(phase_seconds /(24*3600));
-    phase = Math.floor(phase_day / (30 / n_phases));
+    phase = Math.floor(phase_day / (29 / n_phases));
   }
 }
