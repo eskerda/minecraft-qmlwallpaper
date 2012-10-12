@@ -46,14 +46,14 @@ Rectangle {
     height: root.width / 10
     
     x: moon_pos.x - moon.width / 2
-    y: moon_pos.y - moon.width / 2
+    y: moon_pos.y - moon.height / 2
 
     Ellipse {
       id: moon_pos
-      verticalRadius: root.height
+      verticalRadius: root.height - moon.height
       horizontalRadius: root.width / 2
       center_x: root.width / 2
-      center_y: root.height + moon.height
+      center_y: root.height
       displacement: 11 * Math.PI / 8
       alpha: time_alpha
     }
@@ -70,14 +70,14 @@ Rectangle {
     asset_height: 8
     
     x: sun_pos.x - sun.width / 2
-    y: sun_pos.y - sun.width / 2
+    y: sun_pos.y - sun.height / 2
 
     Ellipse {
       id: sun_pos
-      verticalRadius: root.height
+      verticalRadius: root.height - sun.height
       horizontalRadius: root.width / 2
       center_x: root.width / 2
-      center_y: root.height + sun.height
+      center_y: root.height
       displacement: 3 * Math.PI / 8
       alpha: time_alpha
     }
