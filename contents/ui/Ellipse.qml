@@ -7,7 +7,8 @@ QtObject {
     property real verticalRadius
     property real horizontalRadius
     
-    property real x: center_x - horizontalRadius * Math.cos(alpha)
-    property real y: center_y - verticalRadius * Math.sin(alpha)
+    property real x: center_x + horizontalRadius * Math.cos(alpha + displacement)
+    property real y: center_y + verticalRadius * Math.sin(alpha + displacement)
     property real alpha: 0
+    property real displacement: 0
 }
