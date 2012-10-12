@@ -3,6 +3,8 @@ import QtQuick 1.0
 Item {
   id: astro
   property alias source: astroAsset.source
+  property alias asset_width: astroAsset.width
+  property alias asset_height: astroAsset.height
 
   Image {
     id: astroAsset
@@ -10,14 +12,13 @@ Item {
     anchors.fill: parent
     smooth: false
     fillMode: Image.PreserveAspectCrop
-    width: 8
-    height: 8
   }
   
   Image {
     id: astroLight
     source: 'assets/astro/astro_light.png'
-    width: astroAsset.width * 1.5; height: astroAsset.height * 1.5
+    width: astroAsset.width * 1.5 
+    height: astroAsset.height * 1.5
     anchors.horizontalCenter: astroAsset.horizontalCenter
     anchors.verticalCenter: astroAsset.verticalCenter
     z: 0

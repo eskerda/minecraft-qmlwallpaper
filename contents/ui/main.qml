@@ -30,6 +30,8 @@ Rectangle {
     source: 'assets/sun.png'
     width: root.width / 10 // This assumes width > height (usual resolutions) 
     height: root.width / 10
+    asset_width: 8
+    asset_height: 8
     
     x: sun_pos.x - sun.width / 2
     y: sun_pos.y - sun.width / 2
@@ -53,7 +55,6 @@ Rectangle {
       moon_pos.alpha+=0.1
       sun_pos.alpha+=0.1
       moon.step+=1
-      console.log("Stuff", moon_pos.alpha, sun_pos.alpha)
     }
   }
 }
