@@ -1,4 +1,5 @@
 import QtQuick 1.0
+import "pixelsky.js" as PixelSky
 
 Rectangle {
   id: root
@@ -7,8 +8,20 @@ Rectangle {
     GradientStop { position: 0.0; color: '#0B0F12' }
     GradientStop { position: 1.0; color: '#121621' }
   }
-  property real time_alpha: getTimeAlpha(new Date())
 
+  property date now: new Date()
+  property real time_alpha
+  property int interval: 1000 * 60 // One minute
+  property bool debug
+  property int debug_time
+
+  onNowChanged: {
+    time_alpha = getTimeAlpha(now);
+    moon.setPhase(now);
+    if (root.debug !== undefined || root.debug)
+      console.log("It is now: ",now);
+  }
+  
   function getTimeAlpha( date ){
     return ((date.getHours() * 60) + date.getMinutes()) * 2 * Math.PI / (24 * 60)
   }
@@ -16,8 +29,15 @@ Rectangle {
   Timer {
     running: true
     repeat: true
-    interval: 1000 * 60
-    onTriggered: time_alpha = getTimeAlpha(new Date())
+    interval: root.interval
+    onTriggered: {
+      var oldDate  = now;
+      if (root.debug !== undefined || root.debug){
+        // Pass 30 minutes...
+        now = new Date(now.getTime() + root.debug_time);
+      } else 
+        now = new Date();
+    }
   }
 
   Moon {
@@ -34,9 +54,11 @@ Rectangle {
       horizontalRadius: root.width / 2
       center_x: root.width / 2
       center_y: root.height / 2
-      displacement: 5 * Math.PI / 4
+      displacement: 11 * Math.PI / 8
       alpha: time_alpha
     }
+    
+    Component.onCompleted: setPhase(now)
   }
 
   Astro {
@@ -56,8 +78,11 @@ Rectangle {
       horizontalRadius: root.width / 2
       center_x: root.width / 2
       center_y: root.height / 2
-      displacement: Math.PI / 4
+      displacement: 3 * Math.PI / 8
       alpha: time_alpha
     }
+  }
+  Component.onCompleted: {
+    PixelSky.init();
   }
 }
