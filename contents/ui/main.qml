@@ -54,7 +54,7 @@ Rectangle {
     onTriggered: {
       moon_pos.alpha+=0.1
       sun_pos.alpha+=0.1
-      moon.step+=1
+      moon.phase+=1
     }
   }
 }
