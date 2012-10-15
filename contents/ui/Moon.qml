@@ -5,7 +5,7 @@ Astro {
   source: 'assets/moon/moon.png'
   asset_width: 8
   asset_height: 8
-  property int phase
+  property int phase: -1
   property int n_phases: 8
 
   onPhaseChanged: {
@@ -29,6 +29,7 @@ Astro {
     var new_moon = new Date(1970, 0, 7, 20, 35, 0);
     var phase_seconds = ((now.getTime() - new_moon.getTime())/1000) % lp;
     var phase_day = Math.floor(phase_seconds /(24*3600));
-    phase = Math.floor(phase_day / (29 / n_phases));
+    moon.phase = Math.floor(phase_day / (29 / n_phases));
+    console.log("Phase is", phase, source);
   }
 }
