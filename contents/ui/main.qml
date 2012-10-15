@@ -12,14 +12,13 @@ Rectangle {
   property date now: new Date()
   property real time_alpha
   property int interval: 1000 * 60 // One minute
-  property bool debug
+  property bool debug: false
   property int debug_time
 
   onNowChanged: {
     time_alpha = getTimeAlpha(now);
     moon.setPhase(now);
-    if (root.debug !== undefined || root.debug)
-      console.log("It is now: ",now);
+    console.log("It is now: ", now, 'alpha:', time_alpha);
   }
   
   function getTimeAlpha( date ){
@@ -32,10 +31,10 @@ Rectangle {
     interval: root.interval
     onTriggered: {
       var oldDate  = now;
-      if (root.debug !== undefined || root.debug){
+      if (root.debug === undefined || root.debug == true){
         // Pass 30 minutes...
         now = new Date(now.getTime() + root.debug_time);
-      } else 
+      } else
         now = new Date();
     }
   }
@@ -54,7 +53,7 @@ Rectangle {
       horizontalRadius: root.width / 2
       center_x: root.width / 2
       center_y: root.height
-      displacement: 11 * Math.PI / 8
+      displacement: 5 * Math.PI / 4
       alpha: time_alpha
     }
     
@@ -78,7 +77,7 @@ Rectangle {
       horizontalRadius: root.width / 2
       center_x: root.width / 2
       center_y: root.height
-      displacement: 3 * Math.PI / 8
+      displacement: Math.PI / 4
       alpha: time_alpha
     }
   }
